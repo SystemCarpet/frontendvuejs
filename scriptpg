@@ -1,0 +1,35 @@
+-- Insertar en tipo_articulo
+INSERT INTO tipos_articulos (id_tipos_articulos, nombre_tipo_articulo)
+VALUES (1, 'Producto');
+
+-- Insertar en estado_articulo
+INSERT INTO estados_articulos (id_estado_articulo, nombre_estado_articulo)
+VALUES (1, 'Disponible');
+
+-- Insertar en marca_vehiculo
+INSERT INTO marcas_vehiculos (id_marca_vehiculo, nombre_marca_vehiculo)
+VALUES (1, 'Marca de vehículo');
+
+-- Insertar en tipo_vehiculo
+INSERT INTO tipos_vehiculos (id_tipo_vehiculo, nombre_tipo_vehiculo)
+VALUES (1, 'Tipo de vehículo');
+
+-- Insertar en categoria
+INSERT INTO categorias (id_categoria, nombre_categoria, descuento_categoria)
+VALUES (1, 'Categoría de producto', 10.00);
+
+-- Insertar en catalogo
+INSERT INTO catalogos (id_catalogo, nombre_catalogo)
+VALUES (1, 'Catálogo de productos');
+
+-- Insertar en modelo_vehiculo
+INSERT INTO modelos_vehiculos (id_modelo_vehiculo, nombre_modelo_vehiculo, numero_modelo_vehiculo, marca_vehiculo_id, tipo_vehiculo_id)
+VALUES (1, 'Modelo de vehículo', 1234567890, 1, 1);
+
+-- Insertar en articulo
+INSERT INTO articulos (id_articulo, nombre_articulo, cantidad_articulo, dimension_articulo, descripcion_articulo, precio_articulo, tipo_articulo_id, estado_articulo_id)
+VALUES (67890, 'Producto de ejemplo', 10, '10x10x10 cm', 'Este es un producto de ejemplo', 100.00, 1, 1);
+
+-- Insertar en productod
+INSERT INTO productos (id_producto, imagen_producto, articulo_id, categoria_id, modelo_vehiculo_id, catalogo_id)
+VALUES (12345, 'https://example.com/producto.jpg', 67890, 1, 1, 1);
