@@ -50,14 +50,14 @@ export default {
   methods: {
     async getProduct() {
       const response = await fetch(
-        `http://localhost:8090/api/productos/${this.$route.params.id}/update`
+        `http://localhost:8090/api/v1/productos/${this.$route.params.id}/update`
       )
       const json = await response.json()
       this.product = json
     },
     async updateProduct() {
       const response = await fetch(
-        `http://localhost:8090/api/productos/${this.$route.params.id}/update`,
+        `http://localhost:8090/api/v1/productos/${this.$route.params.id}/update`,
         {
           method: 'PATCH',
           headers: {
@@ -82,7 +82,7 @@ export default {
     <form action="" @submit.prevent="updateProduct()">
       <div>
         <label for="img"></label>
-        <input type="text" id="img" name="img" v-model="product.imagenProducto" />
+        <input type="text" id="img" name="img" v-model="product.nombreProducto" />
       </div>
       <div>
         <input type="submit" value="Submit" />

@@ -1,0 +1,64 @@
+@import url("https://cdn.jsdelivr.net/npm/water.css@2/out/light.css");
+
+
+@tailwind components;
+@tailwind utilities;
+ul {
+  padding-left: 0rem;
+}
+
+li {
+  list-style: none;
+}
+
+figure,
+p,
+h2,
+h1,
+h4,
+ul {
+  margin: 0px;
+}
+
+body {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+input {
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+
+label {
+  margin-bottom: 0px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin: 0 4px;
+}
+
+button {
+  margin: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+img {
+  height: 100%;
+}
+
+td,
+th {
+  text-align: center;
+}
+
+table {
+  margin-bottom: 0px;
+}
+
+.container {
+  width: 100%;
+}

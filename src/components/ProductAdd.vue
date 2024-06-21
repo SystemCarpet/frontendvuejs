@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     async addProduct() {
-      const response = await fetch(`http://localhost:8090/api/productos/add`, {
+      const response = await fetch(`http://localhost:8090/api/v1/productos/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

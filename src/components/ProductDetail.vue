@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     async getProduct() {
-      const response = await fetch(`http://localhost:8090/api/productos/${this.$route.params.id}`)
+      const response = await fetch(`http://localhost:8090/api/v1/productos/${this.$route.params.id}`)
       const json = await response.json()
       this.product = json
     }
@@ -64,7 +64,7 @@ export default {
     <h1>/producto/{{ product.idProducto }}</h1>
     <ul>
       <li>{{ product }}</li>
-      <RouterLink :to="{ name: 'updateproductoview', params: { id: product.idProducto } }">editar</RouterLink>
+      <!--<RouterLink :to="{ name: 'updateproductoview', params: { id: product.idProducto } }">editar</RouterLink>-->
     </ul>
   </div>
 </template>
