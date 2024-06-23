@@ -79,8 +79,8 @@ export default {
     <h1>/producto/{{ product.idProducto }}/update</h1>
     <form action="" @submit.prevent="updateProduct()">
       <div>
-        <label for="img"></label>
-        <input type="text" id="img" name="img" v-model="product.nombreProducto" />
+        <label for="img">Imagen producto</label>
+        <input type="text" id="img" name="img" v-model="product.imagenProducto" />
       </div>
       <div>
         <input type="submit" value="Submit" />

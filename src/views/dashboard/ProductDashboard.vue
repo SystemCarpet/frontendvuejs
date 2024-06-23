@@ -1,4 +1,4 @@
-<script lang="ts" >
+<script lang="ts">
 export default {
   name: 'ProductsList',
   data() {
@@ -100,7 +100,7 @@ export default {
               </a>
             </li>
             <li class="px-4 my-2">
-              <RouterLink :to="{ name: 'addproductoview' }" >
+              <RouterLink :to="{ name: 'addproductoview' }">
                 <span class=" text-green-400">
                   <i class="fa-solid fa-plus text-2xl"></i>
                 </span>
@@ -147,61 +147,59 @@ export default {
                   precio</th>
                 <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle"></th>
                 <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle"></th>
+                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle"></th>
               </tr>
             </thead>
 
             <tbody class="bg-gray-50">
-              <tr class="">
+
+
+
+              <tr v-for="product in products" :key="product.idProducto">
                 <td class="align-middle">
-                  <div class="">
-                    <p>01</p>
+                  <div>
+                    <p>{{ product.idProducto }}</p>
                   </div>
                 </td>
                 <td class="align-middle flex justify-center">
-                  <img class="" src="assets/imgs/deluxe.png" alt="">
-
+                  <img :src="product.imagenProducto" alt="">
                 </td>
-                <td class="align-middle">tapete pvc</td>
+                <td class="align-middle">{{ product.articulo.nombreArticulo }}</td>
                 <td class="align-middle">
                   <button class="hover:bg-green-600 bg-green-600 font-bold text-white">
-                    disponible
+                    {{ product.articulo.estadoArticulo.nombreEstadoArticulo }}
 
                   </button>
                 </td>
                 <td class="align-middle">
-                  Viper
+                  {{ product.categoria.nombreCategoria }}
                 </td>
                 <td class="align-middle text-green-600 font-bold">
-                  55%
+                  {{product.categoria.descuentoCategoria}}%
                 </td>
                 <td class="align-middle">
-                  Tapete baul
+                  {{ product.articulo.estadoArticulo.nombreEstadoArticulo }}
                 </td>
                 <td class="align-middle">
                   <button class="hover:bg-orange-500 bg-orange-500 font-bold text-white">
-                    15
+                    {{ product.articulo.cantidad }}
 
                   </button>
                 </td>
                 <td class="align-middle font-bold">
-                  250.000
+                  {{ product.precio }}
                 </td>
                 <td class="align-middle">
-                  <button class="hover:bg-green-600 bg-green-700 font-bold text-white">Editar</button>
+                  <RouterLink :to="{ name: 'updateproductoview', params: { id: product.idProducto } }"><button class="hover:bg-green-600 bg-green-700 font-bold text-white">Editar</button></RouterLink>
+
                 </td>
                 <td class="align-middle">
-                  <button class="hover:bg-red-700 bg-red-500 font-bold text-white">Eliminar</button>
+                  <button class="hover:bg-red-700 bg-red-500 font-bold text-white"  @click="deleteProduct(product.idProducto)">Eliminar</button>
+                </td>
+                <td class="align-middle">
+                  <RouterLink :to="{ name: 'productoview', params: { id: product.idProducto } }"><button class="hover:bg-blue-500 bg-blue-700 font-bold text-white">Ver</button></RouterLink>
                 </td>
               </tr>
-
-              <!--
-           <tr v-for="product in products" :key="product.idProducto">
-            <td>{{ product.idProducto }}</td>
-            <td><RouterLink :to="{ name: 'productoview', params: { id: product.idProducto } }">ver</RouterLink></td>
-            <td><button @click="deleteProduct(product.idProducto)">Eliminar</button></td>
-           </tr>
--->
-
             </tbody>
           </table>
 

@@ -10,7 +10,7 @@ export default {
   <div>
     <ProductUpdate></ProductUpdate>
     <main>
-      <RouterLink :to="{ name: 'productoview' }">atras</RouterLink>
+      <!-- <RouterLink :to="{ name: 'productoview' }">atras</RouterLink> -->
     </main>
   </div>
 </template>
