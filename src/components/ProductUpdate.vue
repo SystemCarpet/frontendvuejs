@@ -9,17 +9,15 @@ export default {
         articulo: {
           idArticulo: 0,
           nombreArticulo: '',
-          cantidadArticulo: 0,
-          dimensionArticulo: '',
-          descripcionArticulo: '',
-          precioArticulo: 0,
-          tipoArticulo: {
-            idTipoArticulo: 0,
-            nombreTipoArticulo: ''
-          },
+          descripcion: '',
+          cantidad: 0,
           estadoArticulo: {
             idEstadoArticulo: 0,
             nombreEstadoArticulo: ''
+          },
+          tipoArticulo: {
+            idTipoArticulo: 0,
+            nombreTipoArticulo: ''
           }
         },
         categoria: {

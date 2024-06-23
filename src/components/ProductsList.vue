@@ -38,18 +38,41 @@ export default {
     </ul>
     <RouterLink :to="{ name: 'addproductoview' }">añadir</RouterLink>
   -->
-    <section>
-      <div class="w-10/12 mx-auto">
-        <div class="grid grid-cols-4">
-          <div class="flex justify-center col-start-1 col-end-4 md:justify-end md:col-start-1 md:col-end-2">
-            <div class="flex flex-col w-3/4 h-min rounded-lg bg-white shadow-lg hover:bg-slate-100 col-span-1 my-4" v-for="product in products" :key="product.idProducto">
-              {{ product }}
-              <RouterLink :to="{ name: 'productoview', params: { id: product.idProducto } }">ver</RouterLink>
+    <main class="m-10">
+      <section>
+        <div class="w-10/12 mx-auto">
+          <div class="grid grid-cols-3">
+            <!-- COMPONENT-->
+            <div class="flex " v-for="product in products" :key="product.idProducto">
+
+              <div class=" flex flex-col w-3/4 rounded-lg bg-white shadow-lg hover:bg-slate-100 col-span-1">
+
+                <RouterLink :to="{ name: 'productoview', params: { id: product.idProducto } }">
+                  <img class="rounded-t-lg w-100" :src="product.imagenProducto"
+                    :alt="product.articulo.nombreArticulo" />
+                </RouterLink>
+                <div class="flex flex-col m-4 h-24 justify-evenly">
+                  <RouterLink :to="{ name: 'productoview', params: { id: product.idProducto } }">
+                    <p class=" font-semibold text-gray-900">
+                      {{ product.articulo.nombreArticulo }}
+                    </p>
+                  </RouterLink>
+
+                  <p>{{ product.articulo.descripcion }}</p>
+
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <span class=" font-bold">${{ product.precio }}</span>
+                      <span class="text-green-400 font-bold">{{ product.categoria.descuentoCategoria }}%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   </div>
 </template>
 <style scoped lang="scss"></style>

@@ -4,7 +4,7 @@ import FooterBase from '../base/FooterBase.vue';
 </script>
 <template>
   <HeaderBase></HeaderBase>
-  <div>
+  <div >
     <main>
           <div class="flex w-full justify-center">
             <div class="my-10 flex items-center px-6">

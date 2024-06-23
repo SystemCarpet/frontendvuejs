@@ -9,7 +9,7 @@ import { RouterLink, RouterView } from 'vue-router'
           <div class="flex items-center font-mono" role="navigation">
             <RouterLink :to="{ name: 'homeview' }" class="mx-4 hidden w-1/5 lg:inline-block">
               <div class="flex">
-                <img src="assets/imgs/AUTOCARPETS_LOGO_BLANCO.png" alt="" class="my-0" />
+                <img src="/assets/imgs/AUTOCARPETS_LOGO_BLANCO.png" alt="" class="my-0" />
               </div>
             </RouterLink>
             <div class="flex grow">

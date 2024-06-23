@@ -6,7 +6,7 @@
       <div class="mx-auto sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
-            <img src="assets/imgs/autocarpet_logo.png" class="mr-5 h-6 sm:h-9" alt="logo" />
+            <img src="/assets/imgs/autocarpet_logo.png" class="mr-5 h-6 sm:h-9" alt="logo" />
             <p class="">
               Autocarpet es una empesa dedicada a la fabricacion y
               distribucion de accesorios automotricez especialmente tapetes
@@ -16,11 +16,11 @@
             <div class="flex">
               <a class="" target="_blank" rel="noreferrer">
                 <span class="sr-only"> Facebook </span>
-                <img src="assets/svg/icons8-facebook.svg" alt="" />
+                <img src="/assets/svg/icons8-facebook.svg" alt="" />
               </a>
               <a class="" target="_blank" rel="noreferrer">
                 <span class="sr-only"> Instagram </span>
-                <img src="assets/svg/icons8-instagram.svg" alt="" />
+                <img src="/assets/svg/icons8-instagram.svg" alt="" />
               </a>
             </div>
           </div>

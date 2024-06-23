@@ -11,7 +11,7 @@ import FooterBase from './base/FooterBase.vue';
   <main>
     <ProductDetail />
   </main>
-  <RouterLink :to="{ name: 'productosview' }">atras</RouterLink>
+ <!-- <RouterLink :to="{ name: 'productosview' }">atras</RouterLink>-->
   <FooterBase></FooterBase>
 </template>
 <style scoped lang="scss"></style>
