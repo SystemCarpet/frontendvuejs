@@ -22,12 +22,13 @@
               </a>
             </li>
             <li class="px-4 my-2">
-              <a href="#" class="flex  rounded-lg  text-gray-600 hover:bg-gray-100">
+              <RouterLink :to="{ name: 'productdashboard' }">
                 <span class="text-blue-500">
                   <i class="fa-solid fa-boxes-packing text-2xl"></i>
                 </span>
                 <span class="ml-3">Productos</span>
-              </a>
+
+              </RouterLink>
             </li>
             <li class="px-4 my-2">
               <a href="#" class="flex  rounded-lg  text-gray-600 hover:bg-gray-100">

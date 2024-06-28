@@ -1,4 +1,7 @@
 <script>
+import DashboardHeader from '../views/dashboard/DashboardHeader.vue'
+import DashboardAside from '../views/dashboard/DashboardAside.vue';
+
 export default {
   name: 'ProductUpdate',
   data() {
@@ -69,6 +72,10 @@ export default {
       }
     }
   },
+  components: {
+    DashboardHeader,
+    DashboardAside
+  },
   beforeMount() {
     this.getProduct()
   }
@@ -76,7 +83,9 @@ export default {
 </script>
 <template>
   <div>
-    <h1>/producto/{{ product.idProducto }}/update</h1>
+    <DashboardHeader></DashboardHeader>
+    <div class="grid grid-cols-4 h-screen">
+      <DashboardAside></DashboardAside>
     <form action="" @submit.prevent="updateProduct()">
       <div>
         <label for="img">Imagen producto</label>
@@ -90,6 +99,8 @@ export default {
         <input type="submit" value="Submit" />
       </div>
     </form>
+    </div>
+
   </div>
 </template>
 <style scoped lang="scss"></style>
