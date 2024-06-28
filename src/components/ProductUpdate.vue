@@ -57,7 +57,7 @@ export default {
       const response = await fetch(
         `http://localhost:8090/api/v1/productos/${this.$route.params.id}/update`,
         {
-          method: 'PATCH',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -81,6 +81,10 @@ export default {
       <div>
         <label for="img">Imagen producto</label>
         <input type="text" id="img" name="img" v-model="product.imagenProducto" />
+      </div>
+      <div>
+        <label for="nombre_producto">Nombre producto</label>
+        <input type="text" id="nombre_producto" name="nombre_producto" v-model="product.articulo.nombreArticulo" />
       </div>
       <div>
         <input type="submit" value="Submit" />
