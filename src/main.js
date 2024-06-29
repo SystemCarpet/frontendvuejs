@@ -12,6 +12,7 @@ import Button from 'primevue/button';
 import InputMask from 'primevue/inputmask';
 import InputText from 'primevue/inputtext';
 import Select from 'primevue/select';
+import Textarea from 'primevue/textarea';
 
 
 const app = createApp(App)
@@ -31,7 +32,7 @@ app.component('FloatLabel',FloatLabel)
 app.component('Button',Button)
 app.component('InputMask',InputMask)
 app.component('InputText',InputText)
-
+app.component('Textarea',Textarea)
 app.component('Select',Select)
 
 

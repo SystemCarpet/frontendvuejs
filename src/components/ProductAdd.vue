@@ -46,7 +46,8 @@ export default {
       vehiculo: [],
       categoria: [],
       estado: [],
-      tipo: []
+      tipo: [],
+      marca: []
 
     }
   },
@@ -91,6 +92,13 @@ export default {
         this.tipo = json
       }
     },
+    async getMarcaVehiculo() {
+      const response = await fetch(`http://localhost:8090/api/v1/marcas-vehiculos`)
+      const json = await response.json()
+      if (response.ok) {
+        this.marca = json
+      }
+    },
   },
   components: {
     DashboardHeader,
@@ -101,6 +109,7 @@ export default {
     this.getCategoria()
     this.getEstadoArticulo()
     this.getTipoArticulo()
+    this.getMarcaVehiculo()
   },
   computed: {
     imageComputed() {
@@ -119,47 +128,69 @@ export default {
       <DashboardAside></DashboardAside>
       <div>
         <h1>Nuevo producto</h1>
-        <form action="" @submit.prevent="console.log(this.product)" class="pt-5">
+        <form action="" @submit.prevent="addProduct()" class="pt-5">
+          <div>
+            <label for="nombre-articulo">Nombre articulo</label><br>
+            <InputText  type="text" v-model="product.articulo.nombreArticulo" id="nombre-articulo" />
+          </div>
+          <div>
+            <p>Descripcion</p>
+            <Textarea v-model="product.articulo.descripcion" autoResize  rows="5" cols="30" />
+          </div>
           <div>
             <label for="price">Precio</label><br>
             <InputNumber v-model="product.precio" inputId="integeronly" suffix=" COP" id="price" />
           </div>
+          <div>
+            <p>Cantidad</p>
+            <InputNumber v-model="product.articulo.cantidad" inputId="minmax" :min="0" :max="100" />
+          </div>
 
           <div>
             <label for="imagen-producto">Imagen</label><br>
-            <InputText type="text" v-model="product.imagenProducto" id="imagen-producto" />
+            <Textarea v-model="product.imagenProducto" autoResize id="imagen-producto" />
+          </div>
+          <div>
+            <label for="marca-vehiculo">Marca Vehiculo</label><br>
+            <Select v-model="product.marcaVehiculo" :options="marca"
+              optionLabel="nombreMarcaVehiculo" placeholder="Marca" class="w-full md:w-56"
+              id="marca-vehiculo" />
           </div>
           <div>
             <label for="modelo-vehiculo">Modelo Vehiculo</label><br>
-            <Select v-model="product.modeloVehiculo.idModeloVehiculo" :options="vehiculo"
+            <Select v-model="product.modeloVehiculo" :options="vehiculo"
               optionLabel="nombreModeloVehiculo" placeholder="Modelo vehiculo" class="w-full md:w-56"
               id="modelo-vehiculo" />
+              <p class="inline font-bold"><span class="text-blue-500"> N°</span>{{ product.modeloVehiculo.numeroModeloVehiculo }}</p>
           </div>
           <div>
             <label for="categoria-vehiculo">Categoria</label><br>
-            <Select v-model="product.categoria.idCategoria" :options="categoria" optionLabel="nombreCategoria"
+            <Select v-model="product.categoria" :options="categoria" optionLabel="nombreCategoria"
               placeholder="Categoria producto" class="w-full md:w-56" id="categoria-vehiculo" />
+              <p class="text-green-500">Descuento! {{ product.categoria.descuentoCategoria }}%</p>
           </div>
           <div>
             <label for="tipo-articulo">Tipo articulo</label><br>
-            <Select v-model="product.articulo.tipoArticulo.idTipoArticulo" :options="tipo"
+            <Select v-model="product.articulo.tipoArticulo" :options="tipo"
               optionLabel="nombreTipoArticulo" placeholder="Tipo de articulo" class="w-full md:w-56"
               id="tipo-articulo" />
           </div>
           <div>
             <label for="estado-articulo">Estado articulo</label><br>
-            <Select v-model="product.articulo.estadoArticulo.idEstadoArticulo" :options="estado"
+            <Select v-model="product.articulo.estadoArticulo" :options="estado"
               optionLabel="nombreEstadoArticulo" placeholder="Estado del articulo" class="w-full md:w-56"
               id="estado-articulo" />
           </div>
+
+
           <div>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Agregar" />
 
           </div>
         </form>
       </div>
-      <div class="col-span-2">
-        <img v-bind:src="imageComputed" alt="">
+      <div class="col-span-2 border-solid border-sky-700 md:flex-1 w-96 h-96 mx-0 my-auto">
+        <img v-bind:src="imageComputed" alt="" >
       </div>
 
     </div>
