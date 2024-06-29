@@ -50,7 +50,7 @@ import { RouterLink } from 'vue-router'
               <li class="mx-1">
                 <RouterLink
                   :to="{ name: 'loginview' }"
-                  class="text-white bg-green-500 px-4 py-2 rounded"
+                  class="text-white  px-4 py-2 rounded"
                   >Ingresar</RouterLink
                 >
               </li>

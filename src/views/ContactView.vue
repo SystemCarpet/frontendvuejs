@@ -4,7 +4,7 @@
     <div class="container mx-auto flex flex-wrap">
       <!-- Contenedor del Formulario -->
       <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex-1">
-        <h2 class="block text-gray-700 text-xl font-bold mb-2">Contáctenos</h2>
+        <h2 class="block text-gray-700 text-xl font-bold mb-2">Contáctanos</h2>
         <form class="w-full max-w-lg">
           <div class="mb-4">
             <label

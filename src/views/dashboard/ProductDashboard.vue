@@ -1,34 +1,37 @@
-<script setup lang="ts">
-import { ref, onMounted } from 'vue';
+<script lang="ts">
 import DashboardHeader from './DashboardHeader.vue';
 import DashboardAside from './DashboardAside.vue';
 
-const products = ref([])
-
-const getProducts = async () => {
-  try {
-    const response = await fetch('http://localhost:8090/api/v1/productos');
-    const json = await response.json();
-    products.value = json;
-  } catch (error) {
-    console.error('Error fetching products:', error);
-  }
-};
-
-const deleteProduct = async (id: number) => {
-  try {
-    const response = await fetch(`http://localhost:8090/api/v1/productos/${id}/delete`, {
-      method: 'DELETE',
-    });
-    if (response.ok) {
-      getProducts();
+export default {
+  name: 'ProductsList',
+  data() {
+    return {
+      products: []
     }
-  } catch (error) {
-    console.error('Error deleting product:', error);
+  },
+  methods: {
+    async getProducts() {
+      const response = await fetch('http://localhost:8090/api/v1/productos')
+      const json = await response.json()
+      this.products = json
+    },
+    async deleteProduct(id) {
+      const response = await fetch(`http://localhost:8090/api/v1/productos/${id}/delete`, {
+        method: 'DELETE'
+      })
+      if (response.ok) {
+        this.getProducts()
+      }
+    }
+  },
+  components: {
+    DashboardHeader,
+    DashboardAside
+  },
+  beforeMount() {
+    this.getProducts()
   }
-};
-
-onMounted(getProducts);
+}
 </script>
 <template>
   <div class="min-h-screen">
@@ -36,7 +39,6 @@ onMounted(getProducts);
     <main>
       <div class="grid grid-cols-4 h-screen">
         <DashboardAside></DashboardAside>
-
         <div class="col-span-3 row-span-3 shadow overflow-hidden rounded border-b border-gray-200  bg-white">
           <table class="">
             <thead class="">

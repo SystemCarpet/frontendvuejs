@@ -3,7 +3,7 @@
 <template>
   <footer class="p-4">
     <div class="mx-auto sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 gap-96 lg:grid-cols-3">
+      <div class="grid grid-cols-1 lg:grid-cols-3">
         <div>
           <img
             src="/assets/imgs/autocarpet_logo.png"
