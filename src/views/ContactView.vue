@@ -1,81 +1,56 @@
 <template>
-  <HeaderBase></HeaderBase>
-  <main class="bg-gray-100 py-10">
-    <div class="container mx-auto flex flex-wrap">
-      <!-- Contenedor del Formulario -->
-      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex-1">
-        <h2 class="block text-gray-700 text-xl font-bold mb-2">Contáctanos</h2>
-        <form class="w-full max-w-lg">
-          <div class="mb-4">
-            <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="name"
-            >
-              Nombre
-            </label>
-            <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="name"
-              type="text"
-              placeholder="Tu nombre"
-            />
-          </div>
-          <div class="mb-4">
-            <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="email"
-            >
-              Email
-            </label>
-            <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
-              type="email"
-              placeholder="tuemail@ejemplo.com"
-            />
-          </div>
-          <div class="mb-4">
-            <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="message"
-            >
-              Mensaje
-            </label>
-            <textarea
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="message"
-              placeholder="Tu mensaje"
-            ></textarea>
-          </div>
-          <div class="flex items-center justify-between">
-            <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-            >
-              Enviar
-            </button>
-          </div>
-        </form>
-      </div>
-      <div class="flex-1 px-4">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15905.870737040765!2d-74.084505!3d4.6884925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b1c4b43e8b9%3A0xaaf374b9c9b7abdb!2sAutocarpet!5e0!3m2!1ses-419!2sco!4v1719552033017!5m2!1ses-419!2sco"
-          width="600"
-          height="450"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
+  <HeaderAlternative></HeaderAlternative>
+  <section class="bg-white">
+    <div class="container px-6 py-12 mx-auto">
+        <div>
+            <h1 class="mt-2 text-2xl font-medium text-blue-950 md:text-3xl ">Acerca de nosotros</h1>
+
+            <p class="mt-3 text-gray-500 text-lg	">Autocarpet .
+              Autocarpet es una empesa dedicada a la fabricacion y distribucion de accesorios automotricez especialmente tapetes sobre medidas para carros - kit de carretera - techos corredizos en america.</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-12 mt-10 lg:grid-cols-3">
+            <div class="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-1">
+
+
+                <div>
+                    <span class="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                    </span>
+
+                    <h2 class="mt-4 text-base font-medium text-gray-800 ">Ubicacion</h2>
+                    <p class="mt-2 text-sm text-gray-500 ">Nos puedes encontrar cerca de la calle 80, si estas interesado en nuestros productos ven y visitanos!!</p>
+                    <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">CALLE 79 NO 69 P-55 BOGOTÁ COLOMBIA..</p>
+                </div>
+
+                <div>
+                    <span class="inline-block p-3 text-blue-500 rounded-full bg-blue-100/80 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                        </svg>
+                    </span>
+
+                    <h2 class="mt-4 text-base font-medium text-gray-800 ">Telefono</h2>
+                    <p class="mt-2 text-sm text-gray-500 ">Lunes-Viernes de 8am a 5pm</p>
+                    <p class="mt-2 text-sm text-blue-500 dark:text-blue-400"> PBX: 490 22 46 Bogotá</p>
+                </div>
+            </div>
+
+            <div class="overflow-hidden rounded-lg lg:col-span-2 h-96 lg:h-auto">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248.52911768355108!2d-74.08477956237236!3d4.688808961415863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9b1c4b43e8b9%3A0xaaf374b9c9b7abdb!2sAutocarpet!5e0!3m2!1ses!2sco!4v1719780963447!5m2!1ses!2sco" width="600" height="450" style="border:0;"  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
     </div>
-  </main>
+</section>
   <FooterBase></FooterBase>
 </template>
 
 <script setup lang="ts">
-import HeaderBase from "./base/HeaderBase.vue";
 import FooterBase from "./base/FooterBase.vue";
+import HeaderAlternative from "./base/HeaderAlternative.vue"
 </script>
 
 <style scoped lang="scss"></style>

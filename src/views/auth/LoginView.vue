@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import HeaderBase from '../base/HeaderBase.vue'
+import HeaderAlternative from "../base/HeaderAlternative.vue"
 import FooterBase from '../base/FooterBase.vue';
 </script>
 <template>
-  <HeaderBase></HeaderBase>
+  <HeaderAlternative></HeaderAlternative>
   <div >
     <main>
           <div class="flex w-full justify-center">

@@ -189,7 +189,7 @@ export default {
           </div>
         </form>
       </div>
-      <div class="col-span-2 border-solid border-sky-700 md:flex-1 w-96 h-96 mx-0 my-auto">
+      <div class="col-span-2 border-solid border-sky-700 md:flex-1 w-96 h-96 mx-auto my-auto">
         <img v-bind:src="imageComputed" alt="" >
       </div>
 

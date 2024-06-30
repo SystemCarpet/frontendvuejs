@@ -9,6 +9,8 @@ import LoginView from '../views/auth/LoginView.vue'
 import ForgotPassword from '../views/auth/ForgotPassword.vue'
 import RegisterView from '../views/auth/RegisterView.vue'
 import ProductDashboard from '../views/dashboard/ProductDashboard.vue'
+import PersonalizacionView from '../views/PersonalizacionView.vue'
+import CompraView from '../views/CompraView.vue'
 
 
 const router = createRouter({
@@ -67,6 +69,18 @@ const router = createRouter({
       path: '/auth/dashboard',
       name: 'productdashboard',
       component: ProductDashboard
+    }
+    ,
+    {
+      path: '/personalizacion',
+      name: 'productopersonalizacion',
+      component: PersonalizacionView
+    }
+    ,
+    {
+      path: '/pedido',
+      name: 'carritodecompras',
+      component: CompraView
     }
   ]
 })

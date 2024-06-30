@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import HeaderBase from '../base/HeaderBase.vue'
+import HeaderAlternative from '../base/HeaderAlternative.vue'
 import FooterBase from '../base/FooterBase.vue';
 </script>
 <template>
-  <HeaderBase></HeaderBase>
+  <HeaderAlternative></HeaderAlternative>
     <main class="flex">
         <div class="container mx-auto">
           <div class="my-10 flex justify-center px-6">

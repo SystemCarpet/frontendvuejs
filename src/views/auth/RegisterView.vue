@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import HeaderBase from '../base/HeaderBase.vue'
+import HeaderAlternative from '../base/HeaderAlternative.vue'
 import FooterBase from '../base/FooterBase.vue';
 </script>
 <template>
-  <HeaderBase></HeaderBase>
+  <HeaderAlternative></HeaderAlternative>
      <main class="">
       <div class="flex items-center justify-center md:justify-self-start p-10 ">
         <div class="mx-auto hidden xl:block">

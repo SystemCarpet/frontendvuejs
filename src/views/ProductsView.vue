@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import ProductsList from '../components/ProductsList.vue'
-import HeaderBase from './base/HeaderBase.vue'
+import HeaderAlternative from './base/HeaderAlternative.vue'
 import FooterBase from './base/FooterBase.vue';
 </script>
 <template>
   <div>
-    <HeaderBase></HeaderBase>
+    <HeaderAlternative></HeaderAlternative>
     <ProductsList />
   <FooterBase></FooterBase>
   </div>

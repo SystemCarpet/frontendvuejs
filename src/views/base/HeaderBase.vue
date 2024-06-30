@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router'
 
 <template>
   <div class="relative max-w-full">
-    <header class="z-10 flex w-full items-center justify-center bg-blue-900">
+    <header class="z-10 flex w-full items-center justify-center bg-transparent absolute">
       <nav class="m-2 w-full">
         <div class="flex items-center font-mono" role="navigation">
           <RouterLink
@@ -48,10 +48,22 @@ import { RouterLink } from 'vue-router'
                 >
               </li>
               <li class="mx-1">
+                <RouterLink :to="{ name: 'productopersonalizacion' }" class="text-white"
+                  >Personalización</RouterLink
+                >
+              </li>
+              <li class="mx-1">
                 <RouterLink
                   :to="{ name: 'loginview' }"
                   class="text-white  px-4 py-2 rounded"
                   >Ingresar</RouterLink
+                >
+              </li>
+              <li class="mx-1">
+                <RouterLink
+                  :to="{ name: 'carritodecompras' }"
+                  class="text-white  px-4 py-2 rounded"
+                  >Compras<span class="fa-solid fa-cart-shopping"></span></RouterLink
                 >
               </li>
             </ul>
