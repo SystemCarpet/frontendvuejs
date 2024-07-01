@@ -1,4 +1,6 @@
 <script>
+import HeaderAlternative from '../views/base/HeaderAlternative.vue';
+
 export default {
   name: 'ProductDetail',
   data() {
@@ -52,6 +54,9 @@ export default {
   },
   beforeMount() {
     this.getProduct()
+  },
+  components:{
+    HeaderAlternative
   }
 }
 </script>
@@ -66,6 +71,7 @@ export default {
   </div>
   -->
   <div class="py-6 h-screen">
+
     <div class="mx-auto mt-6 max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="-mx-4 flex flex-col md:flex-row">
         <div class="border-2 border-solid border-sky-500 px-4 md:flex-1">

@@ -139,46 +139,7 @@ import FooterBase from './base/FooterBase.vue';
           </div>
         </div>
       </section>
-      <section>
-        <h2 class="text-center  text-blue-900  md:text-2xl text-2xl">Galeria</h2>
-        <div class="w-10/12 mx-auto">
-          <div class="grid grid-cols-4">
 
-            <div class="flex  col-span-1  justify-center">
-              <div class=" w-3/4 my-4 shadow-lg">
-                <a href="#!" class="">
-                  <img class="rounded-lg" src="assets/imgs/tapetes-baul-ultramat.jpeg" alt="Hollywood Sign on The Hill" />
-                </a>
-              </div>
-            </div>
-
-            <div class="flex col-span-1 justify-center">
-              <div class="w-3/4 my-4 shadow-lg  ">
-                <a href="#!" class="">
-                  <img class="rounded-lg" src="assets/imgs/tapetes-premium-one-bmw-z4.jpeg" alt="Hollywood Sign on The Hill" />
-                </a>
-              </div>
-            </div>
-
-            <div class="flex col-span-1 justify-center">
-              <div class=" w-3/4 my-4 shadow-lg  ">
-                <a href="#!" class="">
-                  <img class="rounded-lg" src="assets/imgs/tapetes-carros-mercedes-a200.jpeg" alt="Hollywood Sign on The Hill" />
-                </a>
-              </div>
-            </div>
-
-            <div class="flex col-span-1 justify-center">
-              <div class=" w-3/4 my-4 shadow-lg  ">
-                <a href="#!" class="">
-                  <img class="rounded-lg" src="assets/imgs/WhatsApp-Image-2020-10-19-at-8.48.47-PM.jpeg" alt="Hollywood Sign on The Hill" />
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
     </main>
     <FooterBase></FooterBase>
 </template>

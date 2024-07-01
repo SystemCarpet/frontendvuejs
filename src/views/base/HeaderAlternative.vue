@@ -38,15 +38,35 @@ import { RouterLink } from 'vue-router'
             </div>
             <div class="hidden grow md:block">
               <ul class="flex items-center justify-evenly">
-                <li class="mx-1"><a href="#">Nosotros</a></li>
-                <li class="mx-1"><a href="#">Personalización</a></li>
-                <li class="mx-1"><a href="login.html">Log In</a></li>
                 <li class="mx-1">
-                  <a href="cart.html" class="">
-                    compras
-                    <span class="fa-solid fa-cart-shopping"></span>
-                  </a>
-                </li>
+                <RouterLink :to="{ name: 'contactview' }"
+                  >Contáctenos</RouterLink
+                >
+              </li>
+              <li class="mx-1">
+                <RouterLink :to="{ name: 'productosview' }"
+                  >Productos</RouterLink
+                >
+              </li>
+              <li class="mx-1">
+                <RouterLink :to="{ name: 'productopersonalizacion' }"
+                  >Personalización</RouterLink
+                >
+              </li>
+              <li class="mx-1">
+                <RouterLink
+                  :to="{ name: 'loginview' }"
+                  class="  px-4 py-2 rounded"
+                  >Ingresar</RouterLink
+                >
+              </li>
+              <li class="mx-1">
+                <RouterLink
+                  :to="{ name: 'carritodecompras' }"
+                  class="  px-4 py-2 rounded"
+                  >Compras<span class="fa-solid fa-cart-shopping"></span></RouterLink
+                >
+              </li>
               </ul>
             </div>
           </div>

@@ -39,31 +39,29 @@ export default {
     <main>
       <div class="grid grid-cols-4 h-screen">
         <DashboardAside></DashboardAside>
-        <div class="col-span-3 row-span-3 shadow overflow-hidden rounded border-b border-gray-200  bg-white">
+        <div class="col-span-3 m-5 row-span-3 shadow overflow-hidden rounded border-b border-gray-200  bg-white">
           <table class="">
             <thead class="">
               <tr>
-                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle">
-                  id_producto</th>
-                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle">
-                  imagen</th>
-                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle">
-                  nombre_procto</th>
-                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle">
+                <th class="text-gray-500  bg-gray-50 text-center align-middle uppercase">
+                  id </th>
+
+                <th class="text-gray-500  bg-gray-50 text-center align-middle uppercase">
+                  nombre</th>
+                <th class="text-gray-500  bg-gray-50 text-center align-middle uppercase">
                   estado</th>
-                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle">
-                  categoria</th>
-                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle">
+
+                <th class="text-gray-500  bg-gray-50 text-center align-middle uppercase">
                   descuento</th>
-                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle">
+                <th class="text-gray-500  bg-gray-50 text-center align-middle uppercase">
                   tipo</th>
-                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle">
-                  stock_inventario</th>
-                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle">
+                <th class="text-gray-500  bg-gray-50 text-center align-middle uppercase">
+                  cantidad</th>
+                <th class="text-gray-500  bg-gray-50 text-center align-middle uppercase">
                   precio</th>
-                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle"></th>
-                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle"></th>
-                <th class="text-gray-500 uppercase bg-gray-50 text-center align-middle"></th>
+                <th class="text-gray-500  bg-gray-50 text-center align-middle"></th>
+                <th class="text-gray-500  bg-gray-50 text-center align-middle"></th>
+                <th class="text-gray-500  bg-gray-50 text-center align-middle"></th>
               </tr>
             </thead>
 
@@ -77,19 +75,15 @@ export default {
                     <p>{{ product.idProducto }}</p>
                   </div>
                 </td>
-                <td class="align-middle flex justify-center">
-                  <img :src="product.imagenProducto" alt="">
-                </td>
+
                 <td class="align-middle">{{ product.articulo.nombreArticulo }}</td>
                 <td class="align-middle">
-                  <button class="hover:bg-green-600 bg-green-600 font-bold text-white">
+                  <button class="hover:bg-green-600 bg-green-600 font-bold text-white rounded-full">
                     {{ product.articulo.estadoArticulo.nombreEstadoArticulo }}
 
                   </button>
                 </td>
-                <td class="align-middle">
-                  {{ product.categoria.nombreCategoria }}
-                </td>
+
                 <td class="align-middle text-green-600 font-bold">
                   {{product.categoria.descuentoCategoria}}%
                 </td>
@@ -97,9 +91,8 @@ export default {
                   {{ product.articulo.estadoArticulo.nombreEstadoArticulo }}
                 </td>
                 <td class="align-middle">
-                  <button class="hover:bg-orange-500 bg-orange-500 font-bold text-white">
+                  <button class="hover:bg-orange-500 bg-orange-500 font-bold text-white rounded-full">
                     {{ product.articulo.cantidad }}
-
                   </button>
                 </td>
                 <td class="align-middle font-bold">
@@ -110,7 +103,7 @@ export default {
 
                 </td>
                 <td class="align-middle">
-                  <button class="hover:bg-red-700 bg-red-500 font-bold text-white"  @click="deleteProduct(product.idProducto)">Eliminar</button>
+                  <button class="hover:bg-red-700 bg-red-500 font-bold text-white "  @click="deleteProduct(product.idProducto)">Eliminar</button>
                 </td>
                 <td class="align-middle">
                   <RouterLink :to="{ name: 'productoview', params: { id: product.idProducto } }"><button class="hover:bg-blue-500 bg-blue-700 font-bold text-white">Ver</button></RouterLink>

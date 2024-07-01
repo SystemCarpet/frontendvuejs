@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import HeaderAlternative from "../base/HeaderAlternative.vue"
 import FooterBase from '../base/FooterBase.vue';
+import { ref } from "vue";
+
+
+let email = ref("")
+let password = ref("")
+
 </script>
 <template>
   <HeaderAlternative></HeaderAlternative>
@@ -21,6 +27,7 @@ import FooterBase from '../base/FooterBase.vue';
                         type="email"
                         placeholder="Email"
                         class="block w-full rounded-md"
+                        v-model="email"
                       />
                     </div>
                     <div class="mb-3 flex">
@@ -28,6 +35,7 @@ import FooterBase from '../base/FooterBase.vue';
                         type="password"
                         placeholder="Contraseña"
                         class="block w-full rounded-md border"
+                        v-model="password"
                       />
                     </div>
                     <div class="mb-3 flex items-center">

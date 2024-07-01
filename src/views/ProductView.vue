@@ -2,12 +2,12 @@
 import { RouterLink } from 'vue-router'
 import ProductDetail from '../components/ProductDetail.vue'
 
-import HeaderBase from './base/HeaderBase.vue'
+import HeaderAlternative from './base/HeaderAlternative.vue';
 import FooterBase from './base/FooterBase.vue';
 
 </script>
 <template>
-  <HeaderBase></HeaderBase>
+  <HeaderAlternative></HeaderAlternative>
   <main>
     <ProductDetail />
   </main>
