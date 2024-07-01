@@ -11,7 +11,7 @@ import RegisterView from '../views/auth/RegisterView.vue'
 import ProductDashboard from '../views/dashboard/ProductDashboard.vue'
 import PersonalizacionView from '../views/PersonalizacionView.vue'
 import CompraView from '../views/CompraView.vue'
-
+import CategoriaDashboard from '../views/dashboard/CategoriaDashboard.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -81,6 +81,12 @@ const router = createRouter({
       path: '/pedido',
       name: 'carritodecompras',
       component: CompraView
+    }
+    ,
+    {
+      path: '/auth/categorias',
+      name: 'categorias',
+      component: CategoriaDashboard
     }
   ]
 })
