@@ -1,18 +1,34 @@
-<script lang="ts">
+<script setup lang="ts">
 import HeaderAlternative from "../base/HeaderAlternative.vue";
 import FooterBase from "../base/FooterBase.vue";
-
-
-export default {
-  name: "LoginView",
-  data() {
-    return {
+import gql from "graphql-tag";
+import { useMutation } from "@vue/apollo-composable";
+import { useAuthStore } from "../../store/Auth";
+import { ref } from "vue";
+const store = useAuthStore()
+let email = ref("");
+let password = ref("");
+const LOGIN_MUTATION = gql`
+  mutation login($email: String!, $password: String!) {
+    tokenAuth(email: $email, password: $password) {
+      token
     }
-  },
-  components: {
-    HeaderAlternative,
-    FooterBase,
-  },
+  }
+`;
+
+const { mutate: data } = useMutation(LOGIN_MUTATION);
+const login = async () => {
+  try {
+    const response = await data({
+      email: email.value,
+      password: password.value
+    });
+    if(response.data.tokenAuth.token != ""){
+      store.jwt = response.data.tokenAuth.token
+    }
+  } catch (error) {
+    store.error = error
+  }
 };
 </script>
 <template>
@@ -27,14 +43,14 @@ export default {
             <div class="m-5 h-min">
               <h1 class="text-xl font-semibold">Bienvenido de nuevo</h1>
               <small class="">Por favor ingrese sus datos</small>
-              <form class="mt-4">
+              <form class="mt-4" @submit.prevent="login()">
                 <div class="mb-3 flex">
                   <input
                     id="login-email"
                     type="email"
                     placeholder="Email"
                     class="block w-full rounded-md"
-
+                    v-model="email"
                   />
                 </div>
                 <div class="mb-3 flex">
@@ -42,7 +58,7 @@ export default {
                     type="password"
                     placeholder="Contraseña"
                     class="block w-full rounded-md border"
-
+                    v-model="password"
                   />
                 </div>
                 <div class="mb-3 flex items-center">

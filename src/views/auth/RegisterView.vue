@@ -2,6 +2,7 @@
 import HeaderAlternative from "../base/HeaderAlternative.vue";
 import FooterBase from "../base/FooterBase.vue";
 import gql from "graphql-tag";
+
 //https://apollo.vuejs.org/guide-option/queries.html
 
 const LOGIN_MUTATION = gql`
@@ -50,6 +51,8 @@ export default {
             phone: this.phone,
           },
         });
+        this.$router.push({ name: "loginview" });
+
       } catch (error) {
         console.log(error);
       }
@@ -130,21 +133,21 @@ export default {
                 </div>
               </div>
               <div class="mb-3 flex">
-                  <input
-                    type="text"
-                    placeholder="Apellidos"
-                    class="block w-full rounded-md border"
-                    v-model="lastName"
-                  />
-                </div>
-                <div class="mb-3 flex">
-                  <input
-                    type="text"
-                    placeholder="Telefono"
-                    class="block w-full rounded-md border"
-                    v-model="phone"
-                  />
-                </div>
+                <input
+                  type="text"
+                  placeholder="Apellidos"
+                  class="block w-full rounded-md border"
+                  v-model="lastName"
+                />
+              </div>
+              <div class="mb-3 flex">
+                <input
+                  type="text"
+                  placeholder="Telefono"
+                  class="block w-full rounded-md border"
+                  v-model="phone"
+                />
+              </div>
 
               <div class="my-4 flex flex-col">
                 <label for="password_confirmation" class=""
