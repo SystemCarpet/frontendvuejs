@@ -41,6 +41,7 @@ const app = createApp({
 
   render: () => h(App),
 });
+app.use(router);
 app.use(pinia)
 
 app.use(PrimeVue, {
@@ -60,7 +61,7 @@ app.component("InputText", InputText);
 app.component("Textarea", Textarea);
 app.component("Select", Select);
 
-app.use(router);
+
 
 
 app.mount("#app");

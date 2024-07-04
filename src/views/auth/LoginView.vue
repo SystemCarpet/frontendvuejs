@@ -5,9 +5,12 @@ import gql from "graphql-tag";
 import { useMutation } from "@vue/apollo-composable";
 import { useAuthStore } from "../../store/Auth";
 import { ref } from "vue";
+import { useRouter } from 'vue-router';
+
 const store = useAuthStore()
 let email = ref("");
 let password = ref("");
+const router = useRouter();
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
     tokenAuth(email: $email, password: $password) {
@@ -25,6 +28,7 @@ const login = async () => {
     });
     if(response.data.tokenAuth.token != ""){
       store.jwt = response.data.tokenAuth.token
+      router.push({ name: 'productdashboard' });
     }
   } catch (error) {
     store.error = error
