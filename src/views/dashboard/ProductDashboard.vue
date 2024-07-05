@@ -5,7 +5,7 @@ import { ref } from "vue";
 import gql from "graphql-tag";
 import { RouterLink } from "vue-router";
 import { useQuery } from "@vue/apollo-composable";
-
+import { useMutation } from "@vue/apollo-composable";
 let products = ref([]);
 
 const LOGIN_MUTATION = gql`
@@ -26,12 +26,33 @@ const LOGIN_MUTATION = gql`
   }
 `;
 
+const DELETE_MUTATION = gql`
+mutation deleteProduct($id:ID!){
+  deleteProduct(id:$id){
+    message
+  }
+}`;
+
 const { result, loading, error, onResult } = useQuery(LOGIN_MUTATION);
 
 onResult((queryResult) => {
   products.value = queryResult.data
   products.value = products.value.products
 });
+
+const { mutate: data } = useMutation(DELETE_MUTATION);
+
+
+const deleteProduct = async (id) => {
+  try {
+    const response = await data({
+      id: id
+    });
+    console.log(response)
+  } catch (error) {
+    console.log(error)
+  }
+};
 </script>
 <template>
   <div class="min-h-screen">

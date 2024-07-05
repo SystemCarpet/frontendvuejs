@@ -20,7 +20,7 @@ import { RouterLink } from 'vue-router'
         <ul class="flex items-center">
           <li>
             <a href="#" class="font-sans text-sm font-semibold tracking-wider text-gray-800">
-              Javier Andres villabon Morales
+
             </a>
           </li>
         </ul>
