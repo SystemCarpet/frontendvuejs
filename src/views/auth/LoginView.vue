@@ -27,7 +27,7 @@ const login = async () => {
       password: password.value
     });
     if(response.data.tokenAuth.token != ""){
-      store.jwt = response.data.tokenAuth.token
+      store.setJwt(response.data.tokenAuth.token)
       router.push({ name: 'productdashboard' });
     }
   } catch (error) {

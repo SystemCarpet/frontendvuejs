@@ -1,11 +1,15 @@
-<script lang="ts">
+<script setup lang="ts">
 import HeaderAlternative from "../base/HeaderAlternative.vue";
 import FooterBase from "../base/FooterBase.vue";
 import gql from "graphql-tag";
+import { ref } from "vue";
+import { useMutation } from "@vue/apollo-composable";
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 //https://apollo.vuejs.org/guide-option/queries.html
 
-const LOGIN_MUTATION = gql`
+const REGISTER_MUTATION = gql`
   mutation login(
     $email: String!
     $password: String!
@@ -27,41 +31,26 @@ const LOGIN_MUTATION = gql`
   }
 `;
 
-export default {
-  name: "RegisterView",
-  data() {
-    return {
-      email: "",
-      password: "",
-      firstName: "",
-      lastName: "",
-      phone: "",
-    };
-  },
-  methods: {
-    async handleSubmit() {
-      try {
-        const response = await this.$apollo.mutate({
-          mutation: LOGIN_MUTATION,
-          variables: {
-            email: this.email,
-            password: this.password,
-            firstName: this.firstName,
-            lastName: this.lastName,
-            phone: this.phone,
-          },
-        });
-        this.$router.push({ name: "loginview" });
+let email = ref("");
+let password = ref("");
+let firstName = ref("");
+let lastName = ref("");
+let phone = ref("");
 
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
-  components: {
-    HeaderAlternative,
-    FooterBase,
-  },
+const { mutate: data } = useMutation(REGISTER_MUTATION);
+const register = async () => {
+  try {
+    const response = await data({
+      email: email.value,
+      password: password.value,
+      firstName: firstName.value,
+      lastName: lastName.value,
+      phone: phone.value,
+    });
+    router.push({ name: "loginview" });
+  } catch (error) {
+    console.log(error)
+  }
 };
 </script>
 <template>
@@ -95,7 +84,7 @@ export default {
                 >
               </p>
             </div>
-            <form class="text-sm" @submit.prevent="handleSubmit()">
+            <form class="text-sm" @submit.prevent="register()">
               <div class="my-4 flex flex-col">
                 <label for="name" class="">Nombres</label>
                 <input
@@ -178,7 +167,7 @@ export default {
               </div>
 
               <div class="my-4 flex items-center justify-end space-x-4">
-                <button
+                <button type="submit"
                   class="rounded-lg px-8 py-2 uppercase transition duration-150 hover:shadow-xl"
                 >
                   Registrarse

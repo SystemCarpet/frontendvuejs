@@ -1,4 +1,14 @@
-<script setup></script>
+<script setup lang="ts">
+import { useAuthStore } from "../../store/Auth";
+const store = useAuthStore()
+import { useRouter } from 'vue-router';
+const router = useRouter();
+
+const logout =()=>{
+  store.clearJwt()
+  router.push({ name: 'loginview' });
+}
+</script>
 <template>
   <div class="flex col-span-1 row-span-4 rounded-md">
     <ul class="flex w-full flex-col">
@@ -40,12 +50,12 @@
         <span class="my-4 flex text-sm font-medium uppercase text-gray-400">Cuenta</span>
       </li>
       <li class="px-4 my-2">
-        <a href="#" class="flex items-center rounded-lg text-gray-600 hover:bg-gray-100">
+        <button @click="logout()" href="#" class="flex items-center rounded-lg text-gray-600 hover:bg-gray-100">
           <span class="text-red-500">
             <i class="fa-solid fa-lock-open text-2xl"></i>
           </span>
           <span class="ml-3 text-lg">Logout</span>
-        </a>
+        </button>
       </li>
     </ul>
   </div>

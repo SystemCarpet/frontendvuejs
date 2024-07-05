@@ -125,9 +125,8 @@ const router = createRouter({
 });
 router.beforeEach((to, from, next) => {
   const store = useAuthStore();
-  const auth = store.jwt != "";
+  const auth = store.getJwt != "";
   const needAuth = to.meta.requireAuth;
-
   if (needAuth && !auth) {
     next("/login");
   }
