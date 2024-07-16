@@ -15,6 +15,9 @@ import { DefaultApolloClient } from '@vue/apollo-composable'
 const httpLink = new createHttpLink({
   uri:'http://localhost:8000/graphql/'
 })
+import ToastService from 'primevue/toastservice';
+import 'primeicons/primeicons.css';  // Import PrimeIcons
+
 
 const cache = new InMemoryCache()
 
@@ -43,6 +46,8 @@ const app = createApp({
 });
 app.use(router);
 app.use(pinia)
+app.use(ToastService);
+
 
 app.use(PrimeVue, {
   theme: {

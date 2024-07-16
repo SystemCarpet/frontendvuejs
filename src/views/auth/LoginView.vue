@@ -5,12 +5,14 @@ import gql from "graphql-tag";
 import { useMutation } from "@vue/apollo-composable";
 import { useAuthStore } from "../../store/Auth";
 import { ref } from "vue";
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
+import Toast from "primevue/toast";
 
-const store = useAuthStore()
+const store = useAuthStore();
 let email = ref("");
 let password = ref("");
 const router = useRouter();
+
 const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
     tokenAuth(email: $email, password: $password) {
@@ -18,20 +20,31 @@ const LOGIN_MUTATION = gql`
     }
   }
 `;
+import { useToast } from "primevue/usetoast";
+
+const toast = useToast();
+const mostrarToast = () => {
+  toast.add({
+    severity: "success",
+    summary: "Mensaje de éxito",
+    detail: "Contenido del mensaje",
+    life: 3000,
+  });
+};
 
 const { mutate: data } = useMutation(LOGIN_MUTATION);
 const login = async () => {
   try {
     const response = await data({
       email: email.value,
-      password: password.value
+      password: password.value,
     });
-    if(response.data.tokenAuth.token != ""){
-      store.setJwt(response.data.tokenAuth.token)
-      router.push({ name: 'productdashboard' });
+    if (response.data.tokenAuth.token != "") {
+      store.setJwt(response.data.tokenAuth.token);
+      router.push({ name: "productdashboard" });
     }
   } catch (error) {
-    store.error = error
+    store.error = error;
   }
 };
 </script>
@@ -77,6 +90,10 @@ const login = async () => {
                   <button type="submit" class="my-1 w-full">
                     iniciar sesión
                   </button>
+                  <div>
+                    <Button label="Mostrar Toast" @click="mostrarToast()" />
+                    <Toast />
+                  </div>
                 </div>
               </form>
               <div class="text-center">
