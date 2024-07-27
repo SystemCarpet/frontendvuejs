@@ -50,7 +50,7 @@ const logout =()=>{
         <span class="my-4 flex text-sm font-medium uppercase text-gray-400">Cuenta</span>
       </li>
       <li class="px-4 my-2">
-        <button @click="logout()" href="#" class="flex items-center rounded-lg text-gray-600 hover:bg-gray-100">
+        <button @click="logout()" class="bg-transparent hover:bg-transparent hover:text-red-500">
           <span class="text-red-500">
             <i class="fa-solid fa-lock-open text-2xl"></i>
           </span>

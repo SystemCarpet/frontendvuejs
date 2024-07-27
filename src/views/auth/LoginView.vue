@@ -47,6 +47,7 @@ const login = async () => {
     store.error = error;
   }
 };
+
 </script>
 <template>
   <HeaderAlternative></HeaderAlternative>
@@ -90,10 +91,6 @@ const login = async () => {
                   <button type="submit" class="my-1 w-full">
                     iniciar sesión
                   </button>
-                  <div>
-                    <Button label="Mostrar Toast" @click="mostrarToast()" />
-                    <Toast />
-                  </div>
                 </div>
               </form>
               <div class="text-center">
