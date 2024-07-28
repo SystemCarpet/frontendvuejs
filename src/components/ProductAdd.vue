@@ -3,7 +3,7 @@ import DashboardHeader from "../views/dashboard/DashboardHeader.vue";
 import DashboardAside from "../views/dashboard/DashboardAside.vue";
 import gql from "graphql-tag";
 import { useQuery } from "@vue/apollo-composable";
-import { ref, computed } from "vue";
+import { ref, computed, watch, onMounted, onBeforeMount } from "vue";
 
 const INFO_PRODUCT_QUERY = gql`
   query InfoForProductCreation {
@@ -27,23 +27,12 @@ const INFO_PRODUCT_QUERY = gql`
     }
   }
 `;
-const { onResult } = useQuery(INFO_PRODUCT_QUERY);
-
 
 let categoria = ref();
 let estado = ref();
 let tipo = ref();
 let marca = ref();
-let vehiculo = ref()
-let dataJSON = ref()
-
-
-
-onResult((queryResult) => {
-  dataJSON.value = JSON.parse(JSON.stringify(queryResult.data, null, 2))
-});
-
-
+let vehiculo = ref();
 
 let producto = ref({
   precio: 0,
@@ -51,20 +40,37 @@ let producto = ref({
   nombre: "",
   descripcion: "",
   cantidad: 0,
-  marcaVehiculo: marca.value,
-  modeloVehiculo:0,
-  numeroModeloVehiculo: 0,
-  categoria: 0,
-  descuentoCategoria: 0,
   tipoArticulo: 0,
+  modeloVehiculo: 0,
+  marcaVehiculo: 0,
+  categoria: 0,
+  numeroModeloVehiculo: 0,
+  descuentoCategoria: 0,
   estadoArticulo: 0,
 });
+let dataJSON = ref();
 
+const { result, loading, error } = useQuery(INFO_PRODUCT_QUERY);
+
+const dataLoaded = new Promise<void>((resolve) => {
+  watch(loading, (newLoading) => {
+    if (!newLoading && result.value) {
+      dataJSON.value = JSON.parse(JSON.stringify(result.value));
+      resolve();
+    }
+  });
+});
+
+onBeforeMount(async () => {
+  await dataLoaded;
+  marca.value = dataJSON.value.carModels.map((item) => {
+    return { name: item.make.name };
+  });
+
+});
 
 const addProduct = async () => {
-
-
-
+  console.log(marca.value);
 };
 
 const imageComputed = computed(() => producto.value.imagen);
