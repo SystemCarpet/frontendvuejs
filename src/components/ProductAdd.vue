@@ -45,7 +45,6 @@ let producto = ref({
   modeloVehiculo: 0,
   marcaVehiculo: "",
   categoria: 0,
-  numeroModeloVehiculo: "",
   estadoArticulo: 0,
 });
 
@@ -196,7 +195,7 @@ const imageComputed = computed(() => producto.value.imagen);
                 id="modelo-vehiculo"
               />
               <p class="mt-1 text-sm text-blue-500">
-                N° {{ producto.numeroModeloVehiculo }}
+                N° <!--{{  }} -->
               </p>
             </div>
           </div>
