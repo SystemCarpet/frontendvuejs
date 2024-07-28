@@ -32,7 +32,8 @@ let categoria = ref();
 let estado = ref();
 let tipo = ref();
 let marca = ref();
-let vehiculo = ref();
+let modelo = ref();
+
 
 let producto = ref({
   precio: 0,
@@ -42,20 +43,20 @@ let producto = ref({
   cantidad: 0,
   tipoArticulo: 0,
   modeloVehiculo: 0,
-  marcaVehiculo: 0,
+  marcaVehiculo: "",
   categoria: 0,
-  numeroModeloVehiculo: 0,
-  descuentoCategoria: 0,
+  numeroModeloVehiculo: "",
   estadoArticulo: 0,
 });
-let dataJSON = ref();
+
+let dataJSON;
 
 const { result, loading, error } = useQuery(INFO_PRODUCT_QUERY);
 
 const dataLoaded = new Promise<void>((resolve) => {
   watch(loading, (newLoading) => {
     if (!newLoading && result.value) {
-      dataJSON.value = JSON.parse(JSON.stringify(result.value));
+      dataJSON = JSON.parse(JSON.stringify(result.value));
       resolve();
     }
   });
@@ -63,141 +64,20 @@ const dataLoaded = new Promise<void>((resolve) => {
 
 onBeforeMount(async () => {
   await dataLoaded;
-  marca.value = dataJSON.value.carModels.map((item) => {
-    return { name: item.make.name };
-  });
-
+  categoria.value = dataJSON.productCategories;
+  marca.value = dataJSON.carModels;
+  modelo.value = [marca.value[0].make]
 });
 
 const addProduct = async () => {
-  console.log(marca.value);
+  console.log(modelo.value)
 };
 
 const imageComputed = computed(() => producto.value.imagen);
 
-/*
 
 
-export default {
-  name: 'AddProduct',
-  data() {
-    return {
-      product: {
-        idProducto: 0,
-        precio: 0,
-        imagenProducto: '',
-        modeloVehiculo: {
-          idModeloVehiculo: 0,
-          nombreModeloVehiculo: '',
-          numeroModeloVehiculo: 0,
-          marcaVehiculo: {
-            idMarcaVehiculo: 0,
-            nombreMarcaVehiculo: ''
-          },
-          tipoVehiculo: {
-            idTipoVehiculo: 0,
-            nombreTipoVehiculo: ''
-          }
-        },
-        categoria: {
-          idCategoria: 0,
-          nombreCategoria: '',
-          descuentoCategoria: 0
-        },
-        articulo: {
-          idArticulo: 0,
-          nombreArticulo: '',
-          descripcion: '',
-          cantidad: 0,
-          estadoArticulo: {
-            idEstadoArticulo: 0,
-            nombreEstadoArticulo: ''
-          },
-          tipoArticulo: {
-            idTipoArticulo: 0,
-            nombreTipoArticulo: ''
-          }
-        }
-      },
-      vehiculo: [],
-      categoria: [],
-      estado: [],
-      tipo: [],
-      marca: []
 
-    }
-  },
-  methods: {
-    async addProduct() {
-      const response = await fetch(`http://localhost:8090/api/v1/productos/add`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(this.product)
-      })
-      if (response.ok) {
-        this.$router.push({ name: 'productosview' })
-      }
-    },
-    async getModelosVehiculo() {
-      const response = await fetch(`http://localhost:8090/api/v1/modelos-vehiculos`)
-      const json = await response.json()
-      if (response.ok) {
-        this.vehiculo = json
-      }
-    },
-    async getCategoria() {
-      const response = await fetch(`http://localhost:8090/api/v1/categorias`)
-      const json = await response.json()
-      if (response.ok) {
-        this.categoria = json
-      }
-    },
-    async getEstadoArticulo() {
-      const response = await fetch(`http://localhost:8090/api/v1/estados-articulos`)
-      const json = await response.json()
-      if (response.ok) {
-        this.estado = json
-      }
-    },
-    async getTipoArticulo() {
-      const response = await fetch(`http://localhost:8090/api/v1/tipos-articulos`)
-      const json = await response.json()
-      if (response.ok) {
-        this.tipo = json
-      }
-    },
-    async getMarcaVehiculo() {
-      const response = await fetch(`http://localhost:8090/api/v1/marcas-vehiculos`)
-      const json = await response.json()
-      if (response.ok) {
-        this.marca = json
-      }
-    },
-  },
-  components: {
-    DashboardHeader,
-    DashboardAside
-  },
-  beforeMount() {
-    this.getModelosVehiculo()
-    this.getCategoria()
-    this.getEstadoArticulo()
-    this.getTipoArticulo()
-    this.getMarcaVehiculo()
-  },
-  computed: {
-    imageComputed() {
-      return this.product.imagenProducto
-    },
-    descuento() {
-      return this.product.categoria.descuentoCategoria
-    }
-  }
-}
-
-*/
 </script>
 <template>
   <div>
@@ -309,7 +189,7 @@ export default {
               >
               <Select
                 v-model="producto.modeloVehiculo"
-                :options="vehiculo"
+                :options="modelo"
                 optionLabel="name"
                 placeholder="Modelo vehiculo"
                 class="mt-1 w-full border-gray-300 rounded-md shadow-sm"
@@ -330,13 +210,13 @@ export default {
               <Select
                 v-model="producto.categoria"
                 :options="categoria"
-                optionLabel="nombreCategoria"
+                optionLabel="name"
                 placeholder="Categoria producto"
                 class="mt-1 w-full border-gray-300 rounded-md shadow-sm"
                 id="categoria-vehiculo"
               />
               <p class="mt-1 text-sm text-green-500">
-                Descuento! {{ producto.descuentoCategoria }}%
+                Descuento! {{ producto.categoria.discount }}%
               </p>
             </div>
             <div class="w-1/2">
