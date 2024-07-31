@@ -1,0 +1,31 @@
+#tipo vehiculo
+mutation {
+  createCarType(name: "camion") {
+    carType {
+      name
+    }
+  }
+}
+#marca vehiculo
+mutation {
+  createCarMake(name: "hyundai"){
+    carMake{
+      name
+    }
+  }
+}
+
+#modelo vehiculo
+mutation {
+  createCarModel(
+    makeName: "hyundai"
+    name: "h100"
+    year: 1960
+    type: "1"
+    make: "1"
+  ) {
+    carModel {
+      name
+    }
+  }
+}
