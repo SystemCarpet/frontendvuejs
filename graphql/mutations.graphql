@@ -29,3 +29,92 @@ mutation {
     }
   }
 }
+
+#localidad
+mutation {
+  createLocality(name: "Barrios unidos") {
+    locality {
+      name
+    }
+  }
+}
+#barrio
+mutation {
+  createNeighborhood(name: "San Fernando", localityId: "1") {
+    neighborhood {
+      name
+    }
+  }
+}
+#direccion
+mutation {
+  createAddress(details: "detalle dado por el cliente sobre su direccion", neighborhoodId: "1") {
+    address {
+      details
+    }
+  }
+}
+
+#item inventario
+mutation {
+  createInventoryItem(
+    name: "extintor"
+    stock: 10
+    type: "1"
+    description: "descripcion cualquiera"
+  ) {
+    inventoryItem {
+      type
+    }
+  }
+}
+
+#categorias y descuento
+mutation {
+  createProductCategory(discount: 10, name: "en descuento") {
+    productCategory {
+      name
+    }
+  }
+}
+
+#producto
+mutation {
+  createProduct(
+    imageLink: "https://example.com"
+    price: 10000
+    category: 1
+    carModel: 1
+    itemName: "tapete para vehiculo pvc"
+    itemStock: 10
+    itemType: "MAT"
+    modelType: 1
+    itemDescription: "cualquiera"
+    modelMake: 1
+  ) {
+    product {
+      price
+    }
+  }
+}
+
+#crear usuario
+mutation login(
+    $email: String!
+    $password: String!
+    $firstName: String!
+    $lastName: String!
+    $phone: String!
+  ) {
+    createUser(
+      email: $email
+      password: $password
+      firstName: $firstName
+      lastName: $lastName
+      phone: $phone
+    ) {
+      user {
+        email
+      }
+    }
+  }

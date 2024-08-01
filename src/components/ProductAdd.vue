@@ -41,7 +41,7 @@ let producto = ref({
   nombre: "",
   descripcion: "",
   cantidad: 0,
-  tipoArticulo: 0,
+  //tipoArticulo: 0,
   modeloVehiculo: 0,
   marcaVehiculo: "",
   categoria: 0,
@@ -218,6 +218,7 @@ const imageComputed = computed(() => producto.value.imagen);
                 Descuento! {{ producto.categoria.discount }}%
               </p>
             </div>
+            <!--
             <div class="w-1/2">
               <label
                 for="tipo-articulo"
@@ -233,6 +234,7 @@ const imageComputed = computed(() => producto.value.imagen);
                 id="tipo-articulo"
               />
             </div>
+            -->
           </div>
           <div class="flex space-x-4">
             <div class="w-1/2">
