@@ -83,13 +83,13 @@ mutation {
   createProduct(
     imageLink: "https://example.com"
     price: 10000
-    category: 1
-    carModel: 1
     itemName: "tapete para vehiculo pvc"
     itemStock: 10
     itemType: "MAT"
-    modelType: 1
     itemDescription: "cualquiera"
+    category: 1
+    carModel: 1
+    modelType: 1
     modelMake: 1
   ) {
     product {

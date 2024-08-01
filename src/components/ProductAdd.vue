@@ -34,18 +34,17 @@ let tipo = ref();
 let marca = ref();
 let modelo = ref();
 
-
 let producto = ref({
-  precio: 0,
-  imagen: "",
-  nombre: "",
-  descripcion: "",
-  cantidad: 0,
+  precio: 0,//price
+  imagen: "",//imageLink
+  nombre: "",//itemName
+  descripcion: "",//description
+  cantidad: 0,//itemStock
   //tipoArticulo: 0,
   modeloVehiculo: 0,
-  marcaVehiculo: "",
-  categoria: 0,
-  estadoArticulo: 0,
+  marcaVehiculo: 0,//modelMake
+  categoria: 0,//category
+  tipoVehiculo:0,//modelType
 });
 
 let dataJSON;
@@ -65,18 +64,14 @@ onBeforeMount(async () => {
   await dataLoaded;
   categoria.value = dataJSON.productCategories;
   marca.value = dataJSON.carModels;
-  modelo.value = [marca.value[0].make]
+  modelo.value = [marca.value[0].make];
 });
 
 const addProduct = async () => {
-  console.log(modelo.value)
+  console.log(modelo.value);
 };
 
 const imageComputed = computed(() => producto.value.imagen);
-
-
-
-
 </script>
 <template>
   <div>
@@ -195,7 +190,8 @@ const imageComputed = computed(() => producto.value.imagen);
                 id="modelo-vehiculo"
               />
               <p class="mt-1 text-sm text-blue-500">
-                N° <!--{{  }} -->
+                N°
+                <!--{{  }} -->
               </p>
             </div>
           </div>
