@@ -97,7 +97,7 @@ const addProduct = async () => {
 };
 
 const imageComputed = computed(() => producto.value.imagen);
-const modeloVehiculoCompued = computed(() => producto.value.marcaVehiculo.type);
+
 
 </script>
 <template>
@@ -218,7 +218,6 @@ const modeloVehiculoCompued = computed(() => producto.value.marcaVehiculo.type);
               />
               <p class="mt-1 text-sm text-blue-500">
                 N° de modelo:
-                {{ modeloVehiculoCompued.name }}
                 <!--{{  }} -->
               </p>
             </div>
