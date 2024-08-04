@@ -79,23 +79,39 @@ mutation {
 }
 
 #producto
-mutation {
+mutation addProduct($imagen: String!, $precio: Int!, $nombre: String!, $cantidad: Int!, $tipoArticulo: String!, $descripcion: String!, $categoria: ID!, $modeloVehiculo: ID!, $tipoVehiculo: ID!, $marcaVehiculo: ID!) {
   createProduct(
-    imageLink: "https://example.com"
-    price: 10000
-    itemName: "tapete para vehiculo pvc"
-    itemStock: 10
-    itemType: "MAT"
-    itemDescription: "cualquiera"
-    category: 1
-    carModel: 1
-    modelType: 1
-    modelMake: 1
+    imageLink: $imagen
+    price: $precio
+    itemName: $nombre
+    itemStock: $cantidad
+    itemType: $tipoArticulo
+    itemDescription: $descripcion
+    category: $categoria
+    carModel: $modeloVehiculo
+    modelType: $tipoVehiculo
+    modelMake: $marcaVehiculo
   ) {
     product {
-      price
+      inventoryItem{
+        name
+      }
     }
   }
+}
+
+#example
+{
+  "imagen": "https://example.com/imagen-producto.jpg",
+  "precio": 1500,
+  "nombre": "Filtro de Aire",
+  "cantidad": 20,
+  "tipoArticulo": "MAT",
+  "descripcion": "Filtro de aire de alta calidad para automóviles.",
+  "categoria":2,
+  "modeloVehiculo": 1,
+  "tipoVehiculo": 1,
+  "marcaVehiculo": 1
 }
 
 #crear usuario

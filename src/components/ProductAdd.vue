@@ -7,32 +7,56 @@ import { ref, computed, watch, onMounted, onBeforeMount } from "vue";
 
 const INFO_PRODUCT_QUERY = gql`
   query InfoForProductCreation {
-    carModels {
+  carModels {
+    id
+    name
+    year
+    type {
       id
       name
-      year
-      type {
-        id
-        name
-      }
-      make {
-        id
-        name
-      }
     }
-    productCategories {
+    make {
       id
       name
-      discount
     }
   }
+  productCategories {
+    id
+    name
+    discount
+  }
+  carTypes {
+    name
+  }
+}
 `;
+const ADD_PRODUCT_QUERY = gql`
+mutation addProduct($imagen: String!, $precio: Int!, $nombre: String!, $cantidad: Int!, $tipoArticulo: String!, $descripcion: String!, $categoria: ID!, $modeloVehiculo: ID!, $tipoVehiculo: ID!, $marcaVehiculo: ID!) {
+  createProduct(
+    imageLink: $imagen
+    price: $precio
+    itemName: $nombre
+    itemStock: $cantidad
+    itemType: $tipoArticulo
+    itemDescription: $descripcion
+    category: $categoria
+    carModel: $modeloVehiculo
+    modelType: $tipoVehiculo
+    modelMake: $marcaVehiculo
+  ) {
+    product {
+      inventoryItem{
+        name
+      }
+    }
+  }
+}`
 
 let categoria = ref();
-let estado = ref();
-let tipo = ref();
+let tipo = ref(["MAT","RAW","CUS"]);
 let marca = ref();
 let modelo = ref();
+let tipoVehiculo = ref();
 
 let producto = ref({
   precio: 0,//price
@@ -40,8 +64,8 @@ let producto = ref({
   nombre: "",//itemName
   descripcion: "",//description
   cantidad: 0,//itemStock
-  //tipoArticulo: 0,
-  modeloVehiculo: 0,
+  tipoArticulo: 0,//itemType
+  modeloVehiculo: 0,//carModel
   marcaVehiculo: 0,//modelMake
   categoria: 0,//category
   tipoVehiculo:0,//modelType
@@ -65,13 +89,16 @@ onBeforeMount(async () => {
   categoria.value = dataJSON.productCategories;
   marca.value = dataJSON.carModels;
   modelo.value = [marca.value[0].make];
+  tipoVehiculo.value = dataJSON.carTypes;
 });
 
 const addProduct = async () => {
-  console.log(modelo.value);
+  console.log(producto.value);
 };
 
 const imageComputed = computed(() => producto.value.imagen);
+const modeloVehiculoCompued = computed(() => producto.value.marcaVehiculo.type);
+
 </script>
 <template>
   <div>
@@ -124,7 +151,7 @@ const imageComputed = computed(() => producto.value.imagen);
               <InputNumber
                 v-model="producto.precio"
                 inputId="integeronly"
-                suffix=" COP"
+                suffix="COP"
                 id="price"
                 class="mt-1 w-full border-gray-300 rounded-md shadow-sm"
               />
@@ -190,7 +217,8 @@ const imageComputed = computed(() => producto.value.imagen);
                 id="modelo-vehiculo"
               />
               <p class="mt-1 text-sm text-blue-500">
-                N°
+                N° de modelo:
+                {{ modeloVehiculoCompued.name }}
                 <!--{{  }} -->
               </p>
             </div>
@@ -214,7 +242,7 @@ const imageComputed = computed(() => producto.value.imagen);
                 Descuento! {{ producto.categoria.discount }}%
               </p>
             </div>
-            <!--
+
             <div class="w-1/2">
               <label
                 for="tipo-articulo"
@@ -224,28 +252,29 @@ const imageComputed = computed(() => producto.value.imagen);
               <Select
                 v-model="producto.tipoArticulo"
                 :options="tipo"
-                optionLabel="nombreTipoArticulo"
+
                 placeholder="Tipo de articulo"
                 class="mt-1 w-full border-gray-300 rounded-md shadow-sm"
                 id="tipo-articulo"
               />
             </div>
-            -->
+
           </div>
+
           <div class="flex space-x-4">
             <div class="w-1/2">
               <label
-                for="estado-articulo"
+                for="tipo-vehiculo"
                 class="block text-sm font-medium text-gray-700"
-                >Estado articulo</label
+                >Tipo vehiculo</label
               >
               <Select
-                v-model="producto.estadoArticulo"
-                :options="estado"
-                optionLabel="nombreEstadoArticulo"
-                placeholder="Estado del articulo"
+                v-model="producto.tipoVehiculo"
+                :options="tipoVehiculo"
+                optionLabel="name"
+                placeholder="Tipo de vehiculo"
                 class="mt-1 w-full border-gray-300 rounded-md shadow-sm"
-                id="estado-articulo"
+                id="tipo-vehiculo"
               />
             </div>
           </div>
