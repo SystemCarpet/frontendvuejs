@@ -48,7 +48,17 @@ const deleteProduct = async (id) => {
     const response = await data({
       id: id
     });
-    console.log(response)
+
+    for (let i = 0; i < products.value.length; i++) {
+      if (products[i].id === id) {
+
+        if (i !== -1) {
+          products.value.splice(i, 1);
+        }
+        break; // Salir del bucle una vez que se encuentra el índice
+      }
+
+    }
   } catch (error) {
     console.log(error)
   }
@@ -60,58 +70,36 @@ const deleteProduct = async (id) => {
     <main>
       <div class="grid grid-cols-4 h-screen">
         <DashboardAside></DashboardAside>
-        <div
-          class="col-span-3 m-5 row-span-3 shadow overflow-hidden rounded border-b border-gray-200 bg-white"
-        >
+        <div class="col-span-3 m-5 row-span-3 shadow overflow-hidden rounded border-b border-gray-200 bg-white">
           <table class="">
             <thead class="">
               <tr>
-                <th
-                  class="text-gray-500 bg-gray-50 text-center align-middle uppercase"
-                >
+                <th class="text-gray-500 bg-gray-50 text-center align-middle uppercase">
                   id
                 </th>
 
-                <th
-                  class="text-gray-500 bg-gray-50 text-center align-middle uppercase"
-                >
+                <th class="text-gray-500 bg-gray-50 text-center align-middle uppercase">
                   nombre
                 </th>
-                <th
-                  class="text-gray-500 bg-gray-50 text-center align-middle uppercase"
-                >
+                <th class="text-gray-500 bg-gray-50 text-center align-middle uppercase">
                   estado
                 </th>
 
-                <th
-                  class="text-gray-500 bg-gray-50 text-center align-middle uppercase"
-                >
+                <th class="text-gray-500 bg-gray-50 text-center align-middle uppercase">
                   descuento
                 </th>
-                <th
-                  class="text-gray-500 bg-gray-50 text-center align-middle uppercase"
-                >
+                <th class="text-gray-500 bg-gray-50 text-center align-middle uppercase">
                   tipo
                 </th>
-                <th
-                  class="text-gray-500 bg-gray-50 text-center align-middle uppercase"
-                >
+                <th class="text-gray-500 bg-gray-50 text-center align-middle uppercase">
                   cantidad
                 </th>
-                <th
-                  class="text-gray-500 bg-gray-50 text-center align-middle uppercase"
-                >
+                <th class="text-gray-500 bg-gray-50 text-center align-middle uppercase">
                   precio
                 </th>
-                <th
-                  class="text-gray-500 bg-gray-50 text-center align-middle"
-                ></th>
-                <th
-                  class="text-gray-500 bg-gray-50 text-center align-middle"
-                ></th>
-                <th
-                  class="text-gray-500 bg-gray-50 text-center align-middle"
-                ></th>
+                <th class="text-gray-500 bg-gray-50 text-center align-middle"></th>
+                <th class="text-gray-500 bg-gray-50 text-center align-middle"></th>
+                <th class="text-gray-500 bg-gray-50 text-center align-middle"></th>
               </tr>
             </thead>
 
@@ -127,9 +115,7 @@ const deleteProduct = async (id) => {
                   {{ product.inventoryItem.name }}
                 </td>
                 <td class="align-middle">
-                  <button
-                    class="hover:bg-green-600 bg-green-600 font-bold text-white rounded-full"
-                  >
+                  <button class="hover:bg-green-600 bg-green-600 font-bold text-white rounded-full">
                     {{ product.inventoryItem.status }}
                   </button>
                 </td>
@@ -141,9 +127,7 @@ const deleteProduct = async (id) => {
                   {{ product.inventoryItem.type }}
                 </td>
                 <td class="align-middle">
-                  <button
-                    class="hover:bg-orange-500 bg-orange-500 font-bold text-white rounded-full"
-                  >
+                  <button class="hover:bg-orange-500 bg-orange-500 font-bold text-white rounded-full">
                     {{ product.inventoryItem.stock }}
                   </button>
                 </td>
@@ -151,38 +135,25 @@ const deleteProduct = async (id) => {
                   {{ product.price }}
                 </td>
                 <td class="align-middle">
-                  <RouterLink
-                    :to="{
-                      name: 'updateproductoview',
-                      params: { id: product.id },
-                    }"
-                    ><button
-                      class="hover:bg-green-600 bg-green-700 font-bold text-white"
-                    >
+                  <RouterLink :to="{
+                    name: 'updateproductoview',
+                    params: { id: product.id },
+                  }"><button class="hover:bg-green-600 bg-green-700 font-bold text-white">
                       Editar
-                    </button></RouterLink
-                  >
+                    </button></RouterLink>
                 </td>
                 <td class="align-middle">
-                  <button
-                    class="hover:bg-red-700 bg-red-500 font-bold text-white"
-                    @click="deleteProduct(product.id)"
-                  >
+                  <button class="hover:bg-red-700 bg-red-500 font-bold text-white" @click="deleteProduct(product.id)">
                     Eliminar
                   </button>
                 </td>
                 <td class="align-middle">
-                  <RouterLink
-                    :to="{
-                      name: 'productoview',
-                      params: { id: product.id },
-                    }"
-                    ><button
-                      class="hover:bg-blue-500 bg-blue-700 font-bold text-white"
-                    >
+                  <RouterLink :to="{
+                    name: 'productoview',
+                    params: { id: product.id },
+                  }"><button class="hover:bg-blue-500 bg-blue-700 font-bold text-white">
                       Ver
-                    </button></RouterLink
-                  >
+                    </button></RouterLink>
                 </td>
               </tr>
             </tbody>
