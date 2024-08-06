@@ -45,20 +45,14 @@ const { mutate: data } = useMutation(DELETE_MUTATION);
 
 const deleteProduct = async (id) => {
   try {
-    const response = await data({
-      id: id
-    });
 
-    for (let i = 0; i < products.value.length; i++) {
-      if (products[i].id === id) {
+          const response = await data({
+            id: id
+          });
 
-        if (i !== -1) {
-          products.value.splice(i, 1);
-        }
-        break; // Salir del bucle una vez que se encuentra el índice
-      }
+      products.value = products.value.filter(product => product.id !== id);
 
-    }
+    
   } catch (error) {
     console.log(error)
   }
